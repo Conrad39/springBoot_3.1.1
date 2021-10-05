@@ -3,6 +3,7 @@ package ru.jm.springBoot.service;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.jm.springBoot.dao.RoleRepository;
 import ru.jm.springBoot.model.Role;
 
@@ -12,6 +13,7 @@ import java.util.Optional;
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 @Service
+@Transactional
 public class RoleServiceImpl implements RoleService{
     private final RoleRepository roleRepository;
 

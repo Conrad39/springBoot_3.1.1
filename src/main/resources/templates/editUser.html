@@ -12,13 +12,15 @@
         <input type="text" th:field="*{firstName}"/>
         <br/> LastName:
         <input type="text" th:field="*{lastName}"/>
+        <br/> Email:
+        <input type="text" th:field="*{email}"/>
         <br/> Login:
         <input type="text" th:field="*{username}"/>
         <br/> Password:
         <input type="text" th:field="*{password}"/>
         <br/>
-        <input type="checkbox" name="roless" value="ROLE_USER"/> USER
-        <input type="checkbox" name="roless" value="ROLE_ADMIN"/> ADMIN
+        <input type="checkbox" name="rolez" value="ROLE_USER"/> USER
+        <input type="checkbox" name="rolez" value="ROLE_ADMIN"/> ADMIN
         <input type="submit" value="Update User"/>
     </form>
     <a th:href="@{/logout}">Logout</a>

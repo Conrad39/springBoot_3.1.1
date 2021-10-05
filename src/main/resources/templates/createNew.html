@@ -6,7 +6,7 @@
 </head>
 <body>
 <div align="center">
-  <form th:action="@{/user/new}" th:object="${user}" method="post">
+  <form th:action="@{/user/new}" th:object="${user}" th:method="post">
     <br/> Name:
     <input type="text" th:field="*{firstName}"/>
     <br/> Last Name:
@@ -18,8 +18,8 @@
     <br/> Password:
     <input type="text" th:field="*{password}"/>
     <br/>
-    <input type="checkbox" name="roless" value="ROLE_USER"/> USER
-    <input type="checkbox" name="roless" value="ROLE_ADMIN"/> ADMIN
+    <input type="checkbox" name="rolez" value="ROLE_USER"/> USER
+    <input type="checkbox" name="rolez" value="ROLE_ADMIN"/> ADMIN
     <input type="submit" value="Save"/>
   </form>
   <a th:href="@{/logout}">Logout</a>

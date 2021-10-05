@@ -13,6 +13,7 @@ import ru.jm.springBoot.model.User;
 import ru.jm.springBoot.service.RoleService;
 import ru.jm.springBoot.service.UserService;
 
+import java.security.Principal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,6 +27,18 @@ public class UsersController {
         this.userService = userService;
         this.roleService = roleService;
     }
+
+    @GetMapping("/")
+    public String index(Principal principal,ModelMap modelMap){
+        modelMap.addAttribute("username", principal.getName());
+        return "index";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
 
     @GetMapping("admin")
     public String listUser(ModelMap modelMap) {
@@ -49,7 +62,7 @@ public class UsersController {
 
     @PostMapping(value = "user/new")
     public String newUser(@ModelAttribute User user,
-                          @RequestParam(value = "roless") String[] role) throws NotFoundException {
+                          @RequestParam(value = "rolez") String[] role) throws NotFoundException {
         Set<Role> rolesSet = new HashSet<>();
         for (String roles : role) {
             rolesSet.add(roleService.getByName(roles));
@@ -67,7 +80,7 @@ public class UsersController {
     }
 
     @PostMapping(value = "user/edit/{id}")
-    public String editUser(@ModelAttribute User user, @RequestParam(value = "roless") String [] role) throws NotFoundException {
+    public String editUser(@ModelAttribute User user, @RequestParam(value = "rolez") String [] role) throws NotFoundException {
         Set<Role> rolesSet = new HashSet<>();
         for (String roles : role) {
             rolesSet.add((roleService.getByName(roles)));
